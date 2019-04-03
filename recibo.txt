@@ -1,0 +1,17 @@
+	Tienda A Shop Retail
+	Av. Proteco #33, Av. Tabasco 2000, Villahermosa, Tabasco.
+Empleado: Derek
+---------------
+	RECIBO DE COMPRA
+---------------753GBM
+ - Pulque
+ : $300
+ , Cantidad: -397290160   Sub: -397290160
+753GBM
+ - pañales
+ : $2222
+ , Cantidad: 32766   Sub: 32766
+
+	 TOTAL : $114817336
+
+	A SHOP agradece su preferencia

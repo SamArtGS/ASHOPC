@@ -104,7 +104,7 @@ int main(int argc, char **argv){
         }
     }else {
         if(strcmp(emp[usuario].area, "V")==10){
-            printf("\n\t0)Salir 1) Vender un producto \n\t 2)Checar ventas realizadas\n");
+            printf("\n\t0)Salir 1) Vender un producto \n\t 2) Inventario\n");
             scanf("%d",&opcion);
             switch(opcion){
             case 0:
@@ -116,7 +116,7 @@ int main(int argc, char **argv){
             productos = lecturaProducto();
             break;
             case 2:
-
+            estadistica();
             default:
             break;
         }

@@ -16,7 +16,6 @@ int main(int argc, char **argv){
     //DEPARTAMENTOS DISPONIBLES
     
     Departamento *deptosD = malloc(7*sizeof(Departamento));
-    Ventas *vent
     strcpy(deptosD[0].nombre,"Comida");
     strcpy(deptosD[1].nombre,"Ropa");
     strcpy(deptosD[2].nombre,"Licores");
@@ -97,6 +96,8 @@ int main(int argc, char **argv){
             productos = lecturaProducto();
             break;
             case 7:
+            printf("La empresa gasta %d en empleados. \n",dineroEmp());
+            printf("La empresa tiene %d en productos. \n",dineroProductos());
             estadistica();
             break;
             default:
@@ -149,3 +150,4 @@ int main(int argc, char **argv){
     }while(salir!=0);
     return 0;
 }
+

@@ -6,9 +6,10 @@
 #include <stdbool.h>
 #include <time.h>
 #include "Estructuras.h"
-
+int dineroProductos();
+int dineroEmp();
 void compraArticulo(Producto *pro ,Empleado emp){
-    FILE *fptr1, *fptr2;
+        FILE *fptr1, *fptr2;
         int lno, linectr = 0;
         char str[20],fname[20];        
         char nombreel[20];
@@ -100,6 +101,7 @@ void compraArticulo(Producto *pro ,Empleado emp){
         getchar();
         return;
 }
+
 void ventaArticulo(Producto *produ,Empleado emp){
     FILE * fq = NULL;
     char * line2 = NULL;
@@ -177,4 +179,23 @@ void ventaArticulo(Producto *produ,Empleado emp){
     fprintf(fp, "\n\tA SHOP agradece su preferencia\n");
     fclose(fp);
     sleep(10);
+}
+int dineroEmp(){
+    Empleado *emp;
+    emp = lecturaUsuarios();
+    int i,suma;
+    for(i=0;i<4;i++){
+        suma += (int ) emp[i].sueldo;
+    }
+    return suma;
+}
+
+int dineroProductos(){
+    Producto *pd;
+    pd = lecturaProducto();
+    int i, suma;
+    for(i=0;i<4;i++){
+        suma = (int )pd[i].cantidad*(int)pd[i].precioCompra + suma;
+    }
+    return suma;
 }

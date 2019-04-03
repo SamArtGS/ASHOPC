@@ -23,7 +23,7 @@ typedef struct{
 typedef struct{
     char nombre[20];
     int cantidadProdTotal;
-    char **productos;
+    char productos;
     int MoneyTotalDepto;
 }Departamento;
 #endif /* Header_h */

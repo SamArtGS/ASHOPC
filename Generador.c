@@ -48,6 +48,9 @@ int acceso(Empleado *emp,int cak);
 void eliminaEmpleado(Empleado *emp);
 void eliminarProducto(Producto *prod);
 void cambiarDatosEmp(Empleado *emp);
+void cambiarDatosPro(Producto *pro);
+
+
 int main(int argc, char **argv){
     //DEPARTAMENTOS DISPONIBLES
     
@@ -124,9 +127,13 @@ int main(int argc, char **argv){
             break;
             case 5:
             eliminarProducto(productos);
+            free(productos);
             productos = lecturaProducto();
             break;
             case 6:
+            cambiarDatosPro(productos);
+            free(productos);
+            productos = lecturaProducto();
             break;
             case 7:
             break;
@@ -303,7 +310,96 @@ void cambiarDatosEmp(Empleado *emp){
         return;
     return;
 }
-void cambiarDatosProduct(){
+
+void cambiarDatosPro(Producto *pro){
+    FILE *fptr1, *fptr2;
+        int lno, linectr = 0;
+        char str[20],fname[20];        
+        char nombreel[20];
+        
+        fptr1 = fopen("productos.txt", "r");
+        if (fptr1==NULL){
+                printf("NO se pudo abrir!!\n");      
+        }
+        fptr2 = fopen("temp.txt", "w");
+        if (fptr2==NULL) {
+                printf("Error en archivo aux");
+                fclose(fptr1);
+        }
+        int cantidadEmp = 0;
+        int ch;
+        while(!feof(fptr1)){
+            ch = fgetc(fptr1);
+            if(ch == '\n'){
+                cantidadEmp++;
+        }
+        }
+        cantidadEmp++;
+        int datoCambio=0;
+        char datoNuevo[20];
+        printf("Ingrese el ID del producto a cambiar: \n");
+        scanf("%s",nombreel);
+        //printf("%d\n",strcmp(emp[2].usuario,nombreel));
+        printf("¿Qué dato desea cambiar? \n0) Nombre \n1) Apellido \n2) NombreUser \n3) contrasena \n4) Area\n5)Sueldo\n");
+        scanf("%d",&datoCambio);
+        printf("Ingrese el nuevo dato: ");
+        scanf("%s",datoNuevo);
+        for(int j=0;j<cantidadEmp;j++){
+                int moderador = j%7;
+                switch(moderador){
+                case 0:
+                if(moderador==datoCambio&&strcmp(pro[j/7].usuario,nombreel)==10){
+                    fprintf(fptr2, "%s", datoNuevo);
+                }else{
+                    fprintf(fptr2, "%s", pro[j/7].nombre);
+                }
+                break;
+                case 1:
+                if(moderador==datoCambio&&strcmp(pro[j/7].usuario,nombreel)==10){
+                    fprintf(fptr2, "%s", datoNuevo);
+                }else{
+                fprintf(fptr2, "%s", pro[j/7].apellido);
+                }
+                break;
+                case 2:
+                if(moderador==datoCambio&&strcmp(pro[j/7].usuario,nombreel)==10){
+                    fprintf(fptr2, "%s", datoNuevo);
+                }else{
+                fprintf(fptr2, "%s", pro[j/7].usuario);
+                }
+                break;
+                case 3:
+                if(moderador==datoCambio&&strcmp(pro[j/7].usuario,nombreel)==10){
+                    fprintf(fptr2, "%s", datoNuevo);
+                }else{
+                fprintf(fptr2, "%s", pro[j/7].pass);
+                }
+                break;
+                case 4:
+                if(moderador==datoCambio&&strcmp(pro[j/7].usuario,nombreel)==10){
+                    fprintf(fptr2, "%s", datoNuevo);
+                }else{
+                fprintf(fptr2, "%s", pro[j/7].area);
+                }
+                break;
+                case 5:
+                if(moderador==datoCambio&&strcmp(pro[j/7].usuario,nombreel)==10){
+                    fprintf(fptr2, "%s", datoNuevo);
+                }else{
+                    fprintf(fptr2, "%s", pro[j/7].sueldo);
+                }
+                break;
+                case 6:
+                fprintf(fptr2,"\n");
+                break;
+            }
+        }
+        fclose(fptr1);
+        fclose(fptr2);
+        remove("productos.txt");
+        rename("temp.txt", "productos.txt");
+        getchar();
+        return;
     return;
 }
 void agregarProducto(){

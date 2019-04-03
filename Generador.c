@@ -16,7 +16,7 @@ int main(int argc, char **argv){
     //DEPARTAMENTOS DISPONIBLES
     
     Departamento *deptosD = malloc(7*sizeof(Departamento));
-
+    Ventas *vent
     strcpy(deptosD[0].nombre,"Comida");
     strcpy(deptosD[1].nombre,"Ropa");
     strcpy(deptosD[2].nombre,"Licores");
@@ -97,6 +97,7 @@ int main(int argc, char **argv){
             productos = lecturaProducto();
             break;
             case 7:
+            estadistica();
             break;
             default:
             break;
@@ -133,7 +134,7 @@ int main(int argc, char **argv){
             productos = lecturaProducto();
             break;
             case 2:
-            
+            estadistica();
             default:
             break;
         }

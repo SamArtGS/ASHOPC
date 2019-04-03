@@ -146,3 +146,62 @@ Empleado* lecturaUsuarios(){
     fclose(fp);
     return emp;
 }
+void estadistica(){
+	FILE * fp = NULL;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    int cantidadEmp=0;
+    fp = fopen("usuarios.txt", "r");
+    
+    int conta = 0;
+    int ch;
+
+    while(!feof(fp)){
+        ch = fgetc(fp);
+        if(ch == '\n'){
+            cantidadEmp++;
+        }
+    }
+    cantidadEmp++;
+    rewind(fp);
+    int varApoyo1 = cantidadEmp/7;
+    Empleado *emp = malloc(varApoyo1*sizeof(Empleado));
+    while ((read = getline(&line, &len, fp)) != -1) {
+        int moderador = conta%7;
+        switch(moderador){
+            case 0:
+            strcpy(emp[conta/7].nombre,line);
+            printf("Nombre %s",emp[conta/7].nombre);
+            break;
+            case 1:
+            strcpy(emp[conta/7].apellido,line);
+            printf("Apellido %s",emp[conta/7].apellido);
+            break;
+            case 2:
+            strcpy(emp[conta/7].usuario,line);
+            printf("user %s",emp[conta/7].usuario);
+            break;
+            case 3:
+            strcpy(emp[conta/7].pass,line);
+            printf("Contrasena %s",emp[conta/7].pass);
+            break;
+            case 4:
+            strcpy(emp[conta/7].area,line);
+            printf("area %s",emp[conta/7].area);
+            break;
+            case 5:
+            strcpy(emp[conta/7].sueldo,line);
+            printf("sueldo %s",emp[conta/7].sueldo);
+            break;
+            case 6:
+            printf("\n");
+            break;
+        }
+        conta++;
+    }
+    printf("\n PRESIONES UNA TECLA Y ENTER PARA CONTINUAR \n");
+    char jeje[1];
+    scanf("%s",jeje);
+    fclose(fp);
+}
